@@ -1,0 +1,15 @@
+---
+- hosts: all
+  sudo: true
+
+  vars:
+    user: gorsuch
+    git_name: Michael Gorsuch
+    git_email: michael.gorsuch@gmail.com
+
+  roles:
+  - base
+  - user
+  - git
+  - golang
+  - vim

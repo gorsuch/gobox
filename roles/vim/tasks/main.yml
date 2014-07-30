@@ -1,0 +1,29 @@
+- name: .vim/autoload
+  file:
+    state: directory
+    dest: "/home/{{ user }}/.vim/autoload"
+    owner: "{{ user }}"
+
+- name: .vim/bundle
+  file:
+    state: directory
+    dest: "/home/{{ user }}/.vim/bundle"
+    owner: "{{ user }}"
+
+- name: pathogen
+  get_url:
+    url: https://tpo.pe/pathogen.vim
+    dest: "/home/{{ user }}/.vim/autoload/pathogen.vim"
+
+- name: vim-go
+  sudo_user: "{{ user }}"
+  git:
+    repo: https://github.com/fatih/vim-go.git
+    dest: "/home/{{ user }}/.vim/bundle/vim-go"
+    update: no
+
+- name: vimrc
+  template:
+    src: home/user/.vimrc
+    dest: "/home/{{ user }}/.vimrc"
+    owner: "{{ user }}"

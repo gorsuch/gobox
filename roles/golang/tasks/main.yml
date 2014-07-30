@@ -1,0 +1,15 @@
+- name: mkdir
+  file:
+    state: directory
+    dest: /usr/local/go
+
+- name: curl
+  shell: curl -s https://storage.googleapis.com/golang/go1.3.linux-amd64.tar.gz | tar xzf - -C /usr/local/go --strip-components=1
+  args:
+    creates: /usr/local/go/bin
+
+- name: profile.d
+  template:
+    src: etc/profile.d/golang.sh
+    dest: /etc/profile.d/golang.sh
+    mode: 0755

@@ -1,0 +1,5 @@
+- name: .gitconfig
+  template:
+    src: home/user/.gitconfig
+    dest: "/home/{{ user }}/.gitconfig"
+    owner: "{{ user }}"

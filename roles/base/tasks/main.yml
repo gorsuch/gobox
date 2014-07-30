@@ -1,0 +1,16 @@
+- name: update cache
+  apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: packages
+  apt:
+    name: "{{ item }}"
+  with_items:
+  - git-core
+  - mercurial
+  - vim
+  - tmux
+  - strace
+  - htop
+  - tcpdump

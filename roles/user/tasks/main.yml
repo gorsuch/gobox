@@ -1,0 +1,11 @@
+- name: create {{ user }}
+  user:
+    name: "{{ user }}"
+    shell: /bin/bash
+
+- name: sudo template
+  template:
+    src: etc/sudoers.d/99_user
+    dest: /etc/sudoers.d/99_user
+    owner: root
+    mode: 0600
